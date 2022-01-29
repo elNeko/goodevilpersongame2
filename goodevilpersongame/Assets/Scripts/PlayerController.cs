@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Transform soul;
+    
     void Update()
     {
         if (Input.GetKey(KeyCode.D))
@@ -15,8 +17,14 @@ public class PlayerController : MonoBehaviour
         {
             this.transform.position += - transform.forward * 0.05f;
         }
+
+        if (soul == null)
+        {
+            soul = GameObject.Find("Soul").transform;
+        }
     }
 
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.name == "Soul")
@@ -27,10 +35,10 @@ public class PlayerController : MonoBehaviour
     
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("soul is too far");
         if (other.name == "Soul")
         {
             other.gameObject.GetComponent<SoulController>().tooFar = true;
         }
     }
+    */
 }

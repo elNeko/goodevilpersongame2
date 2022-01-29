@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class SoulController : MonoBehaviour
 {
-    public bool tooFar;
-    public Collider coll;
+    // public bool tooFar;
     private int layerMask;
     public float maxDistance;
     private Transform pc;
+    RaycastHit hit;
 
     // Start is called before the first frame update
     void Start()
     {
-        tooFar = false;
+        // tooFar = false;
         layerMask = LayerMask.GetMask("RaycastTarget");
         if (maxDistance <= 0)
         {
@@ -25,24 +25,18 @@ public class SoulController : MonoBehaviour
 
     void Update()
     {
-        RaycastHit hit;
-
+        
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, layerMask))
         {
-            if (!tooFar)
-            {
-                transform.position = new Vector3(Mathf.Clamp(hit.point.x, pc.position.x - maxDistance, pc.position.x + maxDistance) ,
-                    Mathf.Clamp(hit.point.y, pc.position.y - maxDistance, pc.position.y + maxDistance) , transform.position.z);
-            }
-            
-            /*
-            transform.position = new Vector3(
-                Vector3.ClampMagnitude(new Vector3(0,0,0), 3);
-                Mathf.Clamp(hit.point.x, pc.position.x - maxDistance, pc.position.x + maxDistance),
-                Mathf.Clamp(hit.point.y, pc.position.y - maxDistance, pc.position.y + maxDistance),
-                transform.position.z);
-            */
-            transform.position = pc.position + Vector3.ClampMagnitude(hit.point - pc.position, 7);
+            transform.position = pc.position + Vector3.ClampMagnitude(hit.point - pc.position, maxDistance);
         }
+        
+        
+        
+        //transform.position = pc.position + Vector3.ClampMagnitude(Camera.main.ScreenToWorldPoint(Input.mousePosition)  - pc.position, maxDistance);
+        //transform.position = new Vector3(transform.position.x, transform.position.y, pc.position.z-0.02f);
+        
+        
+        Debug.DrawLine(transform.position, pc.transform.position, Color.red);
     }
 }
