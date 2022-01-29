@@ -1,9 +1,9 @@
 skeleton.png
-size:614,520
+size:613,507
 filter:Linear,Linear
 pma:true
 Spirit_0000_Layer-2
-bounds:2,2,270,516
-Spirit_0001_Layer-1
-bounds:274,98,420,338
+bounds:2,342,163,609
 rotate:90
+Spirit_0001_Layer-1
+bounds:2,2,420,338
