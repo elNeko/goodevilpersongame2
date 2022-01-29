@@ -336,7 +336,7 @@ MonoBehaviour:
   HasSourceProject: 0
   HasPlatforms: 0
   sourceProjectPath: FMOD/goodevilpersongameFMOD/goodevilpersongameFMOD.fspro
-  sourceBankPath: FMOD/goodevilpersongameFMOD/Build/Desktop
+  sourceBankPath: Assets/Plugins/FMOD/banks/Desktop
   SourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
