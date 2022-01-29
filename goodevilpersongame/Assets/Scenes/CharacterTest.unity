@@ -225,6 +225,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 539056472, guid: fd398dff2a3bb89448370d17028ea6ff, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8479447814165054921, guid: fd398dff2a3bb89448370d17028ea6ff, type: 3}
       propertyPath: m_Name
       value: PC
@@ -279,6 +283,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd398dff2a3bb89448370d17028ea6ff, type: 3}
+--- !u!1 &539056470 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 539056470, guid: fd398dff2a3bb89448370d17028ea6ff, type: 3}
+  m_PrefabInstance: {fileID: 328269367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &539056475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539056470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af35b0072b67449890f335625355f6d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1869421873
 GameObject:
   m_ObjectHideFlags: 0
