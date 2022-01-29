@@ -6,16 +6,50 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Transform soul;
-    
+    public float maxDistance;
+    public float thrust = 1f;
+    public float grabThrust = 20f;
+    private float groundPosition;
+    public float spring;
+    private bool allowControl;
+    private bool onGround;
+
+    void Start()
+    {
+        soul = GetComponentInChildren<Transform>();
+        groundPosition = transform.position.y;
+        spring = GetComponent<SpringJoint>().spring;
+        GetComponent<SpringJoint>().spring = 0;
+        allowControl = true;
+        onGround = true;
+    }
+
     void Update()
     {
-        if (Input.GetKey(KeyCode.D))
+        if (transform.parent != null)
         {
-            this.transform.position += transform.forward * 0.05f;
+            transform.position = soul.position +
+                                 Vector3.ClampMagnitude(
+                                     new Vector3(transform.position.x, transform.position.y, 0) - soul.position,
+                                     maxDistance);
         }
-        if (Input.GetKey(KeyCode.A))
+
+        if (allowControl)
         {
-            this.transform.position += - transform.forward * 0.05f;
+            if (Input.GetKey(KeyCode.D))
+            {
+                this.transform.position += transform.forward * 0.05f;
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                this.transform.position += -transform.forward * 0.05f;
+            }
+            
+            if (Input.GetKeyDown(KeyCode.Space) && onGround)
+            {
+                GetComponent<Rigidbody>().AddForce(transform.up * thrust);
+            }
         }
 
         if (soul == null)
@@ -24,21 +58,33 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /*
-    private void OnTriggerEnter(Collider other)
+    public void GrappPull(Vector3 grappleTarget)
     {
-        if (other.name == "Soul")
+        GetComponent<Rigidbody>().AddForce(-Vector3.Normalize(transform.position - grappleTarget) *
+                                           GetComponent<PlayerController>().grabThrust);
+        GetComponent<SpringJoint>().spring = spring;
+        allowControl = false;
+    }
+
+    public void DeactivateGrapp()
+    {
+        GetComponent<SpringJoint>().spring = 0;
+        allowControl = true;
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Ground")
         {
-            other.gameObject.GetComponent<SoulController>().tooFar = false;
+            onGround = true;
         }
     }
     
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision other)
     {
-        if (other.name == "Soul")
+        if (other.gameObject.tag == "Ground")
         {
-            other.gameObject.GetComponent<SoulController>().tooFar = true;
+            onGround = false;
         }
     }
-    */
 }
