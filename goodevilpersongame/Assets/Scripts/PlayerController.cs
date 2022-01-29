@@ -11,11 +11,11 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.D))
         {
-            this.transform.position += transform.forward * 0.05f;
+            this.transform.position += transform.right * 0.05f;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            this.transform.position += - transform.forward * 0.05f;
+            this.transform.position += - transform.right * 0.05f;
         }
 
         if (soul == null)
