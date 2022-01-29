@@ -1,0 +1,9 @@
+spirit.png
+size:674,507
+filter:Linear,Linear
+pma:true
+spirit/Spirit_0000_Layer-2
+bounds:2,342,163,670
+rotate:90
+spirit/Spirit_0001_Layer-1
+bounds:2,2,420,338
