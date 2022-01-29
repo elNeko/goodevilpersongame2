@@ -35,22 +35,17 @@ public class SoulController : MonoBehaviour
             transform.position = pc.position +
                                  Vector3.ClampMagnitude(new Vector3(point.x, point.y, 0) - pc.position, maxDistance);
         }
-        
+
 
         if (Input.GetMouseButtonDown(0))
         {
-            //if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity,
-             //   layerMaskWall) && wallCollided)
-             if(wallCollided)
+            if (wallCollided)
             {
                 Debug.Log("grappling");
                 grappleTarget = transform.position;
                 SwitchParentChild(pc.transform, transform);
 
                 pc.GetComponent<PlayerController>().GrappPull(grappleTarget);
-                pc.GetComponent<Rigidbody>().useGravity = false;
-                pc.GetComponent<Rigidbody>().drag = 0;
-                pc.GetComponent<Rigidbody>().isKinematic = true;
             }
         }
 
@@ -58,12 +53,8 @@ public class SoulController : MonoBehaviour
         {
             Debug.Log("ungrabbled");
             SwitchParentChild(transform, pc.transform);
-            pc.GetComponent<Rigidbody>().useGravity = true;
-            pc.GetComponent<Rigidbody>().isKinematic = false;
-
+            pc.GetComponent<PlayerController>().DeactivateGrapp();
         }
-
-        //Debug.DrawLine(transform.position, pc.transform.position, Color.red);
     }
 
     private void OnCollisionEnter(Collision other)
@@ -73,7 +64,7 @@ public class SoulController : MonoBehaviour
             wallCollided = true;
         }
     }
-    
+
     private void OnCollisionExit(Collision other)
     {
         if (other.gameObject.layer == layerMaskWallNr)

@@ -10,13 +10,14 @@ public class PlayerController : MonoBehaviour
     public float thrust = 1f;
     public float grabThrust = 20f;
     private float groundPosition;
-    public float drag;
+    public float spring;
 
     void Start()
     {
         soul = GetComponentInChildren<Transform>();
         groundPosition = transform.position.y;
-        drag = GetComponent<Rigidbody>().drag;
+        spring = GetComponent<SpringJoint>().spring;
+        GetComponent<SpringJoint>().spring = 0;
     }
 
     void Update()
@@ -54,9 +55,14 @@ public class PlayerController : MonoBehaviour
     public void GrappPull(Vector3 grappleTarget)
     {
         Debug.Log("character is pulled");
-        GetComponent<Rigidbody>().AddForce(-Vector3.Normalize(transform.position - grappleTarget)* GetComponent<PlayerController>().grabThrust);
+        GetComponent<Rigidbody>().AddForce(-Vector3.Normalize(transform.position - grappleTarget) * GetComponent<PlayerController>().grabThrust);
+        GetComponent<SpringJoint>().spring = spring;
         Debug.Log(Vector3.Normalize(transform.position - grappleTarget));
-        
         Debug.DrawLine(transform.position, grappleTarget, Color.black);
+    }
+
+    public void DeactivateGrapp()
+    {
+        GetComponent<SpringJoint>().spring = 0;
     }
 }
