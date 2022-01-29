@@ -41,7 +41,6 @@ public class SoulController : MonoBehaviour
         {
             if (wallCollided)
             {
-                Debug.Log("grappling");
                 grappleTarget = transform.position;
                 SwitchParentChild(pc.transform, transform);
 
@@ -51,7 +50,6 @@ public class SoulController : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            Debug.Log("ungrabbled");
             SwitchParentChild(transform, pc.transform);
             pc.GetComponent<PlayerController>().DeactivateGrapp();
         }

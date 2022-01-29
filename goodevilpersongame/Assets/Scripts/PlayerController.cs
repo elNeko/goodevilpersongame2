@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public float grabThrust = 20f;
     private float groundPosition;
     public float spring;
+    private bool allowControl;
+    private bool onGround;
 
     void Start()
     {
@@ -18,6 +20,8 @@ public class PlayerController : MonoBehaviour
         groundPosition = transform.position.y;
         spring = GetComponent<SpringJoint>().spring;
         GetComponent<SpringJoint>().spring = 0;
+        allowControl = true;
+        onGround = true;
     }
 
     void Update()
@@ -28,22 +32,24 @@ public class PlayerController : MonoBehaviour
                                  Vector3.ClampMagnitude(
                                      new Vector3(transform.position.x, transform.position.y, 0) - soul.position,
                                      maxDistance);
+        }
+
+        if (allowControl)
+        {
+            if (Input.GetKey(KeyCode.D))
+            {
+                this.transform.position += transform.forward * 0.05f;
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                this.transform.position += -transform.forward * 0.05f;
+            }
             
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            this.transform.position += transform.forward * 0.05f;
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            this.transform.position += -transform.forward * 0.05f;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) && transform.position.y <= groundPosition)
-        {
-            GetComponent<Rigidbody>().AddForce(transform.up * thrust);
+            if (Input.GetKeyDown(KeyCode.Space) && onGround)
+            {
+                GetComponent<Rigidbody>().AddForce(transform.up * thrust);
+            }
         }
 
         if (soul == null)
@@ -54,15 +60,31 @@ public class PlayerController : MonoBehaviour
 
     public void GrappPull(Vector3 grappleTarget)
     {
-        Debug.Log("character is pulled");
-        GetComponent<Rigidbody>().AddForce(-Vector3.Normalize(transform.position - grappleTarget) * GetComponent<PlayerController>().grabThrust);
+        GetComponent<Rigidbody>().AddForce(-Vector3.Normalize(transform.position - grappleTarget) *
+                                           GetComponent<PlayerController>().grabThrust);
         GetComponent<SpringJoint>().spring = spring;
-        Debug.Log(Vector3.Normalize(transform.position - grappleTarget));
-        Debug.DrawLine(transform.position, grappleTarget, Color.black);
+        allowControl = false;
     }
 
     public void DeactivateGrapp()
     {
         GetComponent<SpringJoint>().spring = 0;
+        allowControl = true;
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            onGround = true;
+        }
+    }
+    
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            onGround = false;
+        }
     }
 }
