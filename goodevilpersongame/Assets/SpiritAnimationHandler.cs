@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using Spine.Unity;
 using UnityEngine;
 
-public class SpiritAnimationHandler : MonoBehaviour
-{
+public class SpiritAnimationHandler : MonoBehaviour {
     private SkeletonAnimation _skeleton;
 
     private void Start() {
         _skeleton = GetComponent<SkeletonAnimation>();
         _skeleton.AnimationState.SetAnimation(0, "idle_body", true);
         _skeleton.AnimationState.SetAnimation(1, "idle_mouth", true);
+
         // _skeleton.AnimationState.SetAnimation(1, "idle_head", true);
     }
 
