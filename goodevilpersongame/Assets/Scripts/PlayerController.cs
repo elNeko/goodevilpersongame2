@@ -6,16 +6,43 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Transform soul;
-    
+    public float maxDistance;
+    public float thrust = 1f;
+    public float grabThrust = 20f;
+    private float groundPosition;
+    public float drag;
+
+    void Start()
+    {
+        soul = GetComponentInChildren<Transform>();
+        groundPosition = transform.position.y;
+        drag = GetComponent<Rigidbody>().drag;
+    }
+
     void Update()
     {
+        if (transform.parent != null)
+        {
+            transform.position = soul.position +
+                                 Vector3.ClampMagnitude(
+                                     new Vector3(transform.position.x, transform.position.y, 0) - soul.position,
+                                     maxDistance);
+            
+        }
+
         if (Input.GetKey(KeyCode.D))
         {
             this.transform.position += transform.forward * 0.05f;
         }
+
         if (Input.GetKey(KeyCode.A))
         {
-            this.transform.position += - transform.forward * 0.05f;
+            this.transform.position += -transform.forward * 0.05f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && transform.position.y <= groundPosition)
+        {
+            GetComponent<Rigidbody>().AddForce(transform.up * thrust);
         }
 
         if (soul == null)
@@ -24,21 +51,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /*
-    private void OnTriggerEnter(Collider other)
+    public void GrappPull(Vector3 grappleTarget)
     {
-        if (other.name == "Soul")
-        {
-            other.gameObject.GetComponent<SoulController>().tooFar = false;
-        }
+        Debug.Log("character is pulled");
+        GetComponent<Rigidbody>().AddForce(-Vector3.Normalize(transform.position - grappleTarget)* GetComponent<PlayerController>().grabThrust);
+        Debug.Log(Vector3.Normalize(transform.position - grappleTarget));
+        
+        Debug.DrawLine(transform.position, grappleTarget, Color.black);
     }
-    
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.name == "Soul")
-        {
-            other.gameObject.GetComponent<SoulController>().tooFar = true;
-        }
-    }
-    */
 }
