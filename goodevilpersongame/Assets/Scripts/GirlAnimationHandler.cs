@@ -21,16 +21,13 @@ namespace DefaultNamespace {
 
             _skeleton = GetComponent<SkeletonAnimation>();
             
-            
             _animationLand = _skeleton.skeleton.Data.FindAnimation("land");
             _animationIdle = _skeleton.skeleton.Data.FindAnimation("idle_2");
             _animationFall = _skeleton.skeleton.Data.FindAnimation("fall");
             _animationRise = _skeleton.skeleton.Data.FindAnimation("rise");
             _animationRun = _skeleton.skeleton.Data.FindAnimation("run");
             
-            _skeleton.AnimationState.SetAnimation(0, _animationIdle, true);
-
-            // _skeleton.AnimationState.SetAnimation(1, "idle_head", true);
+            SetAnimation(_animationIdle, true);
         }
 
         private void Update() {
@@ -58,10 +55,15 @@ namespace DefaultNamespace {
                     _wasAirborne = false;
                     SetAnimation(_animationLand, false);
                 } else {
-                    if (isMovingX || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) {
-                        SetAnimation(_animationRun, true);
-                    } else {
-                        SetAnimation(_animationIdle, true);
+
+                    var current = _skeleton.AnimationState.GetCurrent(0);
+
+                    if (current.Animation != _animationLand || current.IsComplete) {
+                        if (isMovingX || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) {
+                            SetAnimation(_animationRun, true);
+                        } else {
+                            SetAnimation(_animationIdle, true);
+                        }
                     }
 
                 }
@@ -79,7 +81,7 @@ namespace DefaultNamespace {
         
         private void SetAnimation(Animation anim, bool loop) {
             if (_skeleton.AnimationState.GetCurrent(0).Animation != anim) {
-                _skeleton.AnimationState.SetAnimation(0, anim, true);
+                _skeleton.AnimationState.SetAnimation(0, anim, loop);
             }
         }
     }
