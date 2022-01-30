@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public float spring;
     private bool allowControl;
     private bool onGround;
+    public float velocity;
+    private Rigidbody _rb;
 
     void Start()
     {
@@ -18,11 +20,14 @@ public class PlayerController : MonoBehaviour
         spring = GetComponent<SpringJoint>().spring;
         GetComponent<SpringJoint>().spring = 0;
         allowControl = true;
-        onGround = true;
+        onGround = false;
+        _rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        onGround = Physics.Raycast(_rb.position, -Vector3.up, 1f);
+
         if (transform.parent != null)
         {
             transform.position = soul.position +
@@ -35,17 +40,20 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.D))
             {
-                this.transform.position += transform.forward * 0.05f;
+                GetComponent<Rigidbody>()
+                    .MovePosition(transform.position + (transform.forward * Time.fixedDeltaTime * velocity));
             }
 
             if (Input.GetKey(KeyCode.A))
             {
-                this.transform.position += -transform.forward * 0.05f;
+                GetComponent<Rigidbody>()
+                    .MovePosition(transform.position + (-transform.forward * Time.fixedDeltaTime * velocity));
             }
-            
-            if (Input.GetKeyDown(KeyCode.Space) && onGround)
+
+            if (Input.GetKey(KeyCode.Space) && onGround)
             {
-                GetComponent<Rigidbody>().AddForce(transform.up * thrust);
+                Debug.Log("jump!");
+                _rb.velocity = new Vector3(0, 10, 0);
             }
         }
 
@@ -76,7 +84,7 @@ public class PlayerController : MonoBehaviour
             onGround = true;
         }
     }
-    
+
     private void OnCollisionExit(Collision other)
     {
         if (other.gameObject.tag == "Ground")
