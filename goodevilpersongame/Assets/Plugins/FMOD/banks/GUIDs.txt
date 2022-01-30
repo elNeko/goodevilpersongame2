@@ -3,6 +3,7 @@
 {282082c4-2fe9-444b-9f9e-bba0d94ea4ef} bus:/
 {db5f3127-ddde-4c38-875f-5b188cda9bf7} bus:/Reverb
 {103a0212-949b-4009-9a8e-51227d5d4838} event:/TestMusic
+{9717bca8-a050-46c5-a261-71adfb174669} event:/mus_musicbox
 {663b509b-4221-4b4a-863e-06f278c4cbf2} event:/mus_synthdrone
 {c6d2d39e-1f5d-4944-9472-f8060ef05cbb} event:/sfx_ghosts
 {4e28080b-3f9b-4a11-b2e6-9dfec76a7554} event:/sfx_squeaks

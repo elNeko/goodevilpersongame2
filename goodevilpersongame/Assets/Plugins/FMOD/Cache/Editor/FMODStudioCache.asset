@@ -27,6 +27,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 5000
+--- !u!114 &-6903286287060166055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/mus_musicbox
+  m_EditorClassIdentifier: 
+  Path: event:/mus_musicbox
+  Guid:
+    Data1: -1760052056
+    Data2: 1187356752
+    Data3: -1385078366
+    Data4: 1766201339
+  Banks:
+  - {fileID: -2886424486797270266}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 172000
 --- !u!114 &-2886424486797270266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,7 +69,7 @@ MonoBehaviour:
   Path: Assets/Plugins/FMOD/banks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637791355925026033
+  lastModified: 637791567409987017
   FileSizes: []
   Exists: 1
 --- !u!114 &-2620963716739891955
@@ -60,10 +87,10 @@ MonoBehaviour:
   Path: Assets/Plugins/FMOD/banks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637791355925036039
+  lastModified: 637791567410026905
   FileSizes:
   - Name: 
-    Value: 906
+    Value: 958
   Exists: 1
 --- !u!114 &-2328067993220389142
 MonoBehaviour:
@@ -112,12 +139,13 @@ MonoBehaviour:
   - {fileID: -8648683716532673490}
   - {fileID: 5684021186063599278}
   - {fileID: -2328067993220389142}
+  - {fileID: -6903286287060166055}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2886424486797270266}
   StringsBanks:
   - {fileID: -2620963716739891955}
-  cacheTime: 637791355925036039
+  cacheTime: 637791567410026905
   cacheVersion: 10
 --- !u!114 &5684021186063599278
 MonoBehaviour:
