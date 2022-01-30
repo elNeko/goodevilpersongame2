@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{547d64ca-2784-4823-b620-1364b3fb2460}">
+		<property name="assetPath">
+			<value>SFX/sfx_ghosts07.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>10.5</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{607600f3-f5cf-4f8a-808a-8e406ce82c56}</destination>
+		</relationship>
+	</object>
+</objects>
