@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8648683716532673490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_squeaks
+  m_EditorClassIdentifier: 
+  Path: event:/sfx_squeaks
+  Guid:
+    Data1: 1311246347
+    Data2: 1242644379
+    Data3: -23206222
+    Data4: 1416981191
+  Banks:
+  - {fileID: -2886424486797270266}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 5000
 --- !u!114 &-2886424486797270266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,7 +42,7 @@ MonoBehaviour:
   Path: Assets/Plugins/FMOD/banks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637791362114089179
+  lastModified: 637791175334849755
   FileSizes: []
   Exists: 1
 --- !u!114 &-2620963716739891955
@@ -33,11 +60,38 @@ MonoBehaviour:
   Path: Assets/Plugins/FMOD/banks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637791362114089179
+  lastModified: 637791175334869709
   FileSizes:
   - Name: 
-    Value: 758
+    Value: 906
   Exists: 1
+--- !u!114 &-2328067993220389142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_ghosts
+  m_EditorClassIdentifier: 
+  Path: event:/sfx_ghosts
+  Guid:
+    Data1: -959261794
+    Data2: 1229201245
+    Data3: 116945556
+    Data4: -1151537138
+  Banks:
+  - {fileID: -2886424486797270266}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 5000
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,13 +109,43 @@ MonoBehaviour:
   - {fileID: -2886424486797270266}
   EditorEvents:
   - {fileID: 8109268269085493710}
+  - {fileID: -8648683716532673490}
+  - {fileID: 5684021186063599278}
+  - {fileID: -2328067993220389142}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2886424486797270266}
   StringsBanks:
   - {fileID: -2620963716739891955}
-  cacheTime: 637791362114089179
+  cacheTime: 637791175334869709
   cacheVersion: 10
+--- !u!114 &5684021186063599278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/mus_synthdrone
+  m_EditorClassIdentifier: 
+  Path: event:/mus_synthdrone
+  Guid:
+    Data1: 1715163291
+    Data2: 1263157793
+    Data3: -234471802
+    Data4: -221526920
+  Banks:
+  - {fileID: -2886424486797270266}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4200
 --- !u!114 &8109268269085493710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,7 +166,7 @@ MonoBehaviour:
     Data4: 944266621
   Banks:
   - {fileID: -2886424486797270266}
-  IsStream: 1
+  IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters: []
