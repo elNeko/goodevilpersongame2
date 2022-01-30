@@ -23,19 +23,32 @@ public class SpiritAnimationHandler : MonoBehaviour {
     }
 
     private void Update() {
+        
+        // Pressed.
         if (Input.GetMouseButtonDown(0)) {
             SetAnimation(1, _animationBite, false);
         }
 
-        var current = _skeleton.AnimationState.GetCurrent(1);
+        // Held down.
+        if (Input.GetMouseButton(0)) {
+            var current = _skeleton.AnimationState.GetCurrent(1);
 
-        if (current == null || current.Animation == _animationBite && current.IsComplete) {
-            SetAnimation(1, _animationIdleMouth, true);
+            if (current == null || (current.Animation == _animationBite && current.IsComplete)) {
+                SetAnimation(1, _animationBiteIdle, true);
+            }
+        } else {
+            var current = _skeleton.AnimationState.GetCurrent(1);
+
+            if (current == null || current.Animation != _animationBite || (current.Animation == _animationBite && current.IsComplete)) {
+                SetAnimation(1, _animationIdleMouth, true);
+            }
         }
+
     }
 
     private void SetAnimation(int track, Animation anim, bool loop) {
         var current = _skeleton.AnimationState.GetCurrent(track);
+
         if (current == null || current.Animation != anim) {
             _skeleton.AnimationState.SetAnimation(track, anim, loop);
         }
