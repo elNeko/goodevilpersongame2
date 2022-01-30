@@ -318,25 +318,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 0
   wallCollided: 0
---- !u!1 &414631861 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8479447814165054921, guid: 60620d36705538b408db35d6c213bb28, type: 3}
-  m_PrefabInstance: {fileID: 1326024448}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &414631862
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 414631861}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.50000006
-  m_Height: 2.5
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &818501121
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,10 +720,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3237058745876442154, guid: 60620d36705538b408db35d6c213bb28, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 1.1199999
-      objectReference: {fileID: 0}
     - target: {fileID: 4532147513923043836, guid: 60620d36705538b408db35d6c213bb28, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -783,29 +760,9 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8479447814165054920, guid: 60620d36705538b408db35d6c213bb28, type: 3}
-      propertyPath: thrust
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 8479447814165054920, guid: 60620d36705538b408db35d6c213bb28, type: 3}
-      propertyPath: velocity
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8479447814165054920, guid: 60620d36705538b408db35d6c213bb28, type: 3}
-      propertyPath: grabThrust
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8479447814165054921, guid: 60620d36705538b408db35d6c213bb28, type: 3}
       propertyPath: m_Name
       value: PCTheSecond
-      objectReference: {fileID: 0}
-    - target: {fileID: 8479447814165054923, guid: 60620d36705538b408db35d6c213bb28, type: 3}
-      propertyPath: m_Height
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8479447814165054923, guid: 60620d36705538b408db35d6c213bb28, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8479447814165054924, guid: 60620d36705538b408db35d6c213bb28, type: 3}
       propertyPath: m_RootOrder
@@ -851,8 +808,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8479447814165054922, guid: 60620d36705538b408db35d6c213bb28, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60620d36705538b408db35d6c213bb28, type: 3}
 --- !u!1 &1341486943
 GameObject:
