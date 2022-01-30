@@ -41,13 +41,13 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.D))
             {
                 GetComponent<Rigidbody>()
-                    .MovePosition(transform.position + (transform.forward * Time.fixedDeltaTime * velocity));
+                    .MovePosition(transform.position + (transform.right * Time.fixedDeltaTime * velocity));
             }
 
             if (Input.GetKey(KeyCode.A))
             {
                 GetComponent<Rigidbody>()
-                    .MovePosition(transform.position + (-transform.forward * Time.fixedDeltaTime * velocity));
+                    .MovePosition(transform.position + (-transform.right * Time.fixedDeltaTime * velocity));
             }
 
             if (Input.GetKey(KeyCode.Space) && onGround)
