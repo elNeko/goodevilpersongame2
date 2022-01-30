@@ -58,7 +58,6 @@ namespace DefaultNamespace {
                     _wasAirborne = false;
                     SetAnimation(_animationLand, false);
                 } else {
-                    Debug.Log("banana");
                     if (isMovingX || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) {
                         SetAnimation(_animationRun, true);
                     } else {
