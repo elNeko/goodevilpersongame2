@@ -21,9 +21,18 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.LoadScene("Endscreen", LoadSceneMode.Single);
     }
-    
+
+    public void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            QuitGame();
+        }
+    }
+
     public void QuitGame()
     {
+        Debug.Log("BEBOB");
         Application.Quit();
     }
 }

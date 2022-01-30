@@ -133,6 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af35b0072b67449890f335625355f6d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathBG: {fileID: 0}
+  death: {fileID: 0}
 --- !u!1 &6334789392348931919
 GameObject:
   m_ObjectHideFlags: 0
@@ -5125,6 +5127,7 @@ MonoBehaviour:
   thrust: 1
   grabThrust: 20
   spring: 0
+  velocity: 0
 --- !u!54 &8479447814165054927
 Rigidbody:
   m_ObjectHideFlags: 0
